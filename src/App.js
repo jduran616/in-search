@@ -21,6 +21,30 @@ class Search extends Component {
   }
 }
 
+class Results extends Component {
+  render() {
+    return (
+      <div class="flex-grid">
+        <div class="col">
+          <img src="https://static.pexels.com/photos/867483/pexels-photo-867483.jpeg"/>
+          <img src="https://static.pexels.com/photos/867483/pexels-photo-867483.jpeg"/>
+          <img src="https://static.pexels.com/photos/867483/pexels-photo-867483.jpeg"/>
+        </div>
+        <div class="col">
+          <img src="https://static.pexels.com/photos/867483/pexels-photo-867483.jpeg"/>
+          <img src="https://static.pexels.com/photos/867483/pexels-photo-867483.jpeg"/>
+          <img src="https://static.pexels.com/photos/867483/pexels-photo-867483.jpeg"/>
+        </div>
+        <div class="col">
+          <img src="https://static.pexels.com/photos/867483/pexels-photo-867483.jpeg"/>
+          <img src="https://static.pexels.com/photos/867483/pexels-photo-867483.jpeg"/>
+          <img src="https://static.pexels.com/photos/867483/pexels-photo-867483.jpeg"/>
+        </div>
+      </div>
+    )
+  }
+}
+
 class App extends Component {
   constructor() {
     super();
@@ -31,7 +55,24 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Search/>
+        {this.state.user
+          ?
+            <Search/>
+          :
+          // <button onClick={() => {window.location = window.location.href.includes('localhost')
+          //   ? 'http://localhost:8888/login'
+          //   : 'http://nu-playlist-backend.herokuapp.com/login'}}
+          // style={
+          //   {
+          //     'fontSize': '20px',
+          //     'padding': '20px',
+          //     'background': 'transparent',
+          //     'border': 'none',
+          //     'borderBottom' : '2px solid',
+          //     'cursor': 'pointer'}
+          // }>Sign In With Instagram</button>
+          <Results/>
+        }
       </div>
     );
   }

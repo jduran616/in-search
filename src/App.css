@@ -8,5 +8,17 @@
   background: -webkit-linear-gradient(left, #BB377D, #FBD3E9);
   background: -o-linear-gradient(left, #BB377D, #FBD3E9);
   background: linear-gradient(to right, #BB377D, #FBD3E9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
 
+.flex-grid {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex-grid .col {
+  width: 32%;
+}
+
+img {
+  width: 100%;
 }
