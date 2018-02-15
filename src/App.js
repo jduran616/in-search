@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class Search extends Component {
@@ -52,26 +51,37 @@ class App extends Component {
       filterString: ''
     }
   };
+  ComponentDidMount() {
+    let parsed = new URLSearchParams(window.location.search).get('access_token');
+
+    if(!parsed)
+      return;
+
+    const get_self ='https://api.instagram.com/v1/users/self/?access_token='+parsed;
+
+    fetch(get_self).then(response => response.json())
+        .then(data => this.setState({
+          user: {
+            name: data.username
+          }
+        }));
+  }
   render() {
     return (
       <div className="App">
-        {this.state.user
-          ?
-            <Search/>
-          :
-          // <button onClick={() => {window.location = window.location.href.includes('localhost')
-          //   ? 'http://localhost:8888/login'
-          //   : 'http://nu-playlist-backend.herokuapp.com/login'}}
-          // style={
-          //   {
-          //     'fontSize': '20px',
-          //     'padding': '20px',
-          //     'background': 'transparent',
-          //     'border': 'none',
-          //     'borderBottom' : '2px solid',
-          //     'cursor': 'pointer'}
-          // }>Sign In With Instagram</button>
-          <Results/>
+        {this.state.user ? <Search/> :
+          <button onClick={() => {window.location = window.location.href.includes('localhost')
+            ? 'http://localhost:8888/login'
+            : 'http://intag-backend.herokuapp.com/login'}}
+          style={
+            {
+              'fontSize': '20px',
+              'padding': '20px',
+              'background': 'transparent',
+              'border': 'none',
+              'borderBottom' : '2px solid',
+              'cursor': 'pointer'}
+          }>Sign In With Instagram</button>
         }
       </div>
     );
